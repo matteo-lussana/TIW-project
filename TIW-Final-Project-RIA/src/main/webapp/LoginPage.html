@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="ISO-8859-1">
+		<title>Login Page</title>
+		<script src = "login.js" charset="utf-8" defer></script>
+		<script src = "utils.js" charset="utf-8" defer></script>
+		<link rel="stylesheet" type="text/css" media="all" href="./css/style.css"/>
+	</head>
+	
+	<body>
+		
+		<form class="loginForm">
+		<h3>User Login</h3>
+		<p class="errorMsg" id="errorMsg"></p>
+		<label>Username:</label> 
+		<input type="text" name="username" id="username" placeholder="username" required><br>
+		<label>Password:</label> 
+		<input type="password" name="password" id="password" placeholder="password" required><br>
+		<input type="button" value="Login" id="login-button" class="button">
+		
+		<div class = "inLine">
+			<label> Don't have an account yet? &nbsp;</label> <a class="signInLink" href = "SigninPage.html">Sign in</a>
+		</div>
+		
+		</form>
+	</body>
+</html>

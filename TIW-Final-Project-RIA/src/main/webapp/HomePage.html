@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset = "ISO-8859-1">
+		<meta charset = "UTF-8">
+		<title>Home Page</title>
+		<script src="utils.js" charset="utf-8" defer></script>
+		<script src="home.js" charset = "utf-8" defer></script>
+		<link rel="stylesheet" type="text/css" media="all" href="./css/style.css"/>
+	</head>
+	
+	<body>
+	
+		<form>
+			<input type="button" value="Logout" id="logout" class="logout">
+		</form>
+		
+		<h1>Home Page</h1>
+		
+		<!-- Zone for the buttons "SAVE" and "CANCEL" after the copy of a subtree -->
+		<div id="saveZone" class="saveZone"></div>
+		
+		<!-- Error messages -->
+		<p id = "saveError"></p>
+		<p id = "errorMsg"></p>
+		
+		<!-- Categories tree -->
+		<table id = "categoryList">
+			<tbody id = "category">
+			<tr> 
+				<td id = "code"> </td>
+				<td id = "name"> </td>
+			</tr>
+			</tbody>
+		</table>
+		
+		<!-- Form for the creation of new categories -->
+		<form class = "newCategoryForm">
+			<fieldset>
+				<h4>Create a new category</h4>
+				<p id="formErrorMsg" class = "errorMsg"></p>
+				
+				<label>Name:  </label> 
+				<input type="text" name="name" id="name" placeholder="category name" required>
+				
+				<table class = "chooseFather">
+					<tr>
+						<td>
+							<span id="isCheckboxFather"> 
+								<label>click here if it is an ancestor </label> 
+								<input class="checkbox" type="checkbox" name="isFather" value="true" id="isFather">
+							</span>
+						</td>
+						<td>
+							<span id = "isCheckboxFather">
+								<label> or </label>
+							</span>
+						</td>
+						<td>
+							<label for="allcategories"> select the father </label> 
+							<select name="fatherCodeList" id="fatherCodeList">
+								<option></option>
+							</select>
+						</td>
+					</tr>
+				</table>
+				<br><input class="button" type="button" value="Create category" id="newCatButton">
+			</fieldset>
+		</form>
+	</body>
+</html>

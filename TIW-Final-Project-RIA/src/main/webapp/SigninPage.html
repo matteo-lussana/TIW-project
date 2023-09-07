@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="ISO-8859-1">
+		<title>Signin Page</title>
+		<script src = "signin.js" charset="utf-8" defer></script>
+		<script src = "utils.js" charset="utf-8" defer></script>
+		<link rel="stylesheet" type="text/css" media="all" href="./css/style.css"/>
+	</head>
+	<body>
+		<form class="signinForm">
+		<h3>Sign In</h3>
+		<p class="errorMsg" id="errorMsg"></p>
+		<label>Identification code:</label> <input type="text" name="code" placeholder="code" required><br>
+		<label>Name:</label> <input type="text" name="name" placeholder="name" required><br>
+		<label>Last name:</label> <input type="text" name="lastname" placeholder="lastname"  required><br>
+		<label>Username:</label> <input type="text" name="username" placeholder="username" required><br>
+		<label>Password:</label> <input type="password" name="password" placeholder="password"  required><br>
+		<label>Insert again the password:</label> <input type="password" name="password2" placeholder="password2"  required><br>
+		<input type="submit" value="Sign In" class="button" id="signinButton">
+		</form>
+	</body>
+</html>
