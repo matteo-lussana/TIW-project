@@ -1,0 +1,177 @@
+@charset "UTF-8";
+
+.inFamily {
+	color: red;
+}
+
+.error {
+	color: red;
+	text-decoration: red underline;
+}
+
+body {
+	background-color: #E8F1F2;
+	font-family: 'Poppins', sans-serif;
+	letter-spacing: 0.5px;
+	outline: none;
+	border: none;
+}
+
+.newCategoryForm {
+	position: relative;
+	transform: translate(-50%, 0);
+	left: 50%;
+	width: 600px;
+	height: 10em;
+	border-radius: 10px;
+	backdrop-filter: blur(10px);
+	border: 2px solid rgba(255, 255, 255, 0.1);
+}
+
+.loginForm {
+	height: 450px;
+	width: 400px;
+	position: absolute;
+	transform: translate(-50%, -50%);
+	top: 50%;
+	left: 50%;
+	border-radius: 10px;
+	backdrop-filter: blur(10px);
+	padding: 50px 35px;
+	box-shadow: 0 0 40px rgba(8, 7, 16, 0.6);
+	border: 2px solid rgba(255, 255, 255, 0.1);
+}
+
+.signinForm {
+	width: 500px;
+	position: absolute;
+	border-radius: 10px;
+	backdrop-filter: blur(10px);
+	padding: 50px 35px;
+	box-shadow: 0 0 40px rgba(8, 7, 16, 0.6);
+	border: 2px solid rgba(255, 255, 255, 0.1);
+	transform: translate(-50%, 0);
+	left: 50%;
+}
+
+h3 {
+	text-align: center;
+	font-size: 32px;
+	font-weight: 500;
+	line-height: 42px;
+	color: #39304A;
+	font-family: bold, 'Poppins', sans-serif;
+}
+
+h4 {
+	text-align: center;
+	font-size: 25px;
+	color: #39304A;
+	font-family: 'Poppins', sans-serif;
+}
+
+::placeholder {
+	color: #39304A;
+}
+
+.button {
+	margin-top: 40px;
+	width: 100%;
+	background-color: #0075F2;
+	padding: 15px 0;
+	font-size: 18px;
+	font-weight: 600;
+	border-radius: 5px;
+	cursor: pointer;
+	color: #E8F1F2;
+	height: 50px;
+}
+
+.button:hover{
+	padding: 15px 0;
+	font-size: 18px;
+	font-weight: 600;
+	background-color: #E8F1F2;
+	color: #0075F2;
+	border: 4px solid;
+	border-color: #0075F2;
+}
+
+label {
+	display: block;
+	margin-top: 30px;
+	font-size: 16px;
+	font-weight: 500;
+}
+.signInLink{
+	display: block;
+	margin-top: 30px;
+	font-size: 16px;
+	font-weight: 500;
+}
+
+input {
+	display: block;
+	height: 30px;
+	width: 100%;
+	background-color: rgba(255, 255, 255, 0.07);
+	border-radius: 3px;
+	margin-top: 8px;
+	font-size: 14px;
+	font-weight: 300;
+}
+
+.errorMsg {
+	color: #D64933;
+	font-size: 14px;
+}
+
+input.checkbox {
+	height: 15px;
+	padding: 8px 0 6px 30px;
+	display: inline-block;
+	width: auto;
+	vertical-align: middle;
+	position: relative;
+}
+
+.logout {
+	position: absolute;
+	right: 0;
+	color: #D64933;
+	font-family: 'Poppins', sans-serif;
+	width: 100px;
+	height: 19px;
+	background-color: #D64933;
+	padding: 15px 0;
+	font-size: 18px;
+	font-weight: 600;
+	border-radius: 5px;
+	cursor: pointer;
+	color: #E8F1F2;
+	height: 50px;
+}
+
+.dragCat {
+	color: #F0C808;
+}
+
+.drag-over {
+	border: 3px red;
+}
+
+.inLine {
+	display: flex;
+	flex-direction: row;
+}
+
+.chooseFather {
+	justify-content: center;
+	align-items: center;
+	text-align : center;
+	width: 100%;
+}
+
+.invisible{
+	display: none;
+}

@@ -1,0 +1,34 @@
+<!DOCTYPE html SYSTEM "http://www.thymeleaf.org/dtd/xhtml1-strict-thymeleaf-4.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+
+  <body>
+  
+    <div th:fragment="copy(${allcategories}, father)">
+      <div th:each="category : ${allcategories}" >
+      	<!-- print the categories which father's code is "father" -->
+      	<span th:if="${category.father == father}">
+      		
+      		<!-- indentation of the sub-categories -->
+      		<span th:with = "code = ${category.code}, string = ${#strings.toString(code)}, digitCount = ${#strings.length(string)}">
+				<span th:each = "i : ${#numbers.sequence(1, digitCount)}" th:text = "'&nbsp;&nbsp;'"></span>
+			</span>
+      		
+      		<!-- print code and name -->
+      		<span th:text="${category.code + ' ' + category.name}"></span>
+      		
+      		<!-- print the "copy" link only if the category hasn't already got 17 descendants -->
+      		<span th:unless = "${#lists.contains(noCopyCategories, category)}">
+				<a th:href = "@{/CopyCategory(categoryCode = ${category.code})}"> copy </a>
+			</span>
+			
+			<!-- recursive call -->
+      		<span th:include="WEB-INF/fragments/fragmentCopy :: copy(${allcategories}, father)" th:with="father=${category.code}"></span>
+      	</span>	
+      	 
+      </div>
+    </div>
+  
+  </body>
+  
+</html>

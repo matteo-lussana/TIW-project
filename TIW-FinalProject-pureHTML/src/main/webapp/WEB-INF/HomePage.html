@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+	<meta charset="ISO-8859-1">
+	<title>Home Page</title>
+	<link rel="stylesheet" type="text/css" media="all" href="../CSS/style.css" th:href="@{/css/style.css}" />
+</head>
+<body>
+
+	<!-- Logout button -->
+	<form th:action="@{/Logout}" method="POST">
+		<input class="logout" type="submit" name="Logout" value="Logout" />
+	</form>
+
+	<h1>Home Page</h1>
+	
+	<div>
+		
+		<!-- Categories' tree with the "copy" link -->
+		
+		<span th:if="${allcategories.size() == 0}">
+			No categories yet
+		</span>
+		
+		<span th:if="${family} == null" th:each="category : ${ancestors}">
+			<span th:text="${'&nbsp;'+ category.code + ' ' + category.name}"> </span>
+			<span th:unless="${#lists.contains(noCopyCategories, category)}">
+				<a th:href="@{/CopyCategory(categoryCode = ${category.code})}">
+					copy </a>
+			</span> 
+			<span
+				th:include="WEB-INF/fragments/fragmentCopy :: copy(${allcategories}, father)"
+				th:with="father=${category.code}">
+			</span>
+		</span>
+		
+		<!-- Categories' tree with the "copy here" link --> 
+		<span th:unless="${family} == null"> 
+			<span th:each="category : ${ancestors}"> 
+			<span th:text="${category.code + ' ' + category.name}" 
+				th:class="${#lists.contains(family, category)}? 'inFamily'"></span>
+			<span th:unless=" ${family.get(0).getCode() == category.getCode() 
+						or category.isComplete == true or #lists.contains(noCopyHereCategories, category)}">
+				<a th:href="@{/InsertFamily(familyFather = ${family[0].code}, targetCode = ${category.code})}">
+						copy here</a>
+			</span> 
+			
+			<span th:include="WEB-INF/fragments/fragmentCopyHere :: copy(${allcategories}, 
+					categoriesInFamily, father)" th:with="father=${category.code}, categoriesInFamily =${family} ">
+			</span>
+		
+			</span> 
+			<span th:unless="${ancestors.size() == 9}"> 
+				<a th:href="@{/InsertFamily(familyFather = ${family[0].code}, targetCode = 0)}">copy here</a>
+			</span>
+		</span>
+	</div>
+
+	<div>
+		<!-- Form for the creation of a new category -->
+		<form class="newCategoryForm" th:if="${family} == null" action="#"
+			th:action="@{/CreateCategory}" method="POST">
+			
+			<fieldset>
+				<h4>Create a new category</h4>
+				<label>Name: </label> <input type="text" name="name" placeholder="category name" required>
+				<table class = "chooseFather">
+					<tr>
+						<td>
+							<span th:unless="${ancestors.size() == 9}"> 
+								<label>click here if it is an ancestor</label> 
+								<input class="checkbox" type="checkbox" name="isFather" value="true">
+							</span>
+						</td>
+						<td>
+							<span th:unless="${ancestors.size() == 9}"> 
+								<label> or </label>
+							</span>
+						</td>
+						<td>
+							<label for="allcategories"> select the father </label> 
+							<select name="fatherCode" id="fatherCode">
+								<option th:each="category : ${allcategories}"
+									th:value="${category.code}"
+									th:if="${category.isComplete} == false"
+									th:text="${category.code+' '+category.name}">
+								</option>
+							</select>
+						</td>
+					</tr>
+				</table>
+				<input class="button" type="submit" name="create category" value="Create category" />
+			</fieldset>
+		</form>
+	</div>
+</body>
+</html>

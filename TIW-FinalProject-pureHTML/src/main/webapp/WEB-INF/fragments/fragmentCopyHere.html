@@ -1,0 +1,26 @@
+<!DOCTYPE html SYSTEM "http://www.thymeleaf.org/dtd/xhtml1-strict-thymeleaf-4.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+
+  <body>
+    <div th:fragment="copy(${allcategories}, ${family}, father)">
+      <div th:each="category : ${allcategories}" >
+      	<span th:if="${category.father == father}">
+      	
+      		<span th:with = "code = ${category.code}, string = ${#strings.toString(code)}, digitCount = ${#strings.length(string)}">
+				<span th:each = "i : ${#numbers.sequence(1, digitCount)}" th:text = "'&nbsp;&nbsp;'"></span>
+			</span>
+		
+      		<span th:text="${category.code + ' ' + category.name}" th:class ="${#lists.contains(family, category)}? 'inFamily'"></span>
+      	
+      		<span th:unless = " ${#lists.contains(family, category) or category.isComplete == true or #lists.contains(noCopyHereCategories, category)}">
+      			<a th:href = "@{/InsertFamily(familyFather = ${family[0].code}, targetCode = ${category.code})}"> copy here</a>
+      		</span>
+      		<span th:include="WEB-INF/fragments/fragmentCopyHere :: copy(${allcategories}, categoriesInFamily, father)" th:with="father = ${category.code}, categoriesInFamily = ${family}"></span>
+     	
+     	</span>	
+      </div>
+    </div>
+  </body>
+  
+</html>
