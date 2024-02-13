@@ -183,16 +183,25 @@ public class CategoryDAO {
 	 */
 	public void moveFamily(List<CategoryClass> family, long newAncestorCode) throws SQLException {
 		int familyFatherDigitsNum = String.valueOf(family.get(0).getCode()).length();
-		
-		createCategory(newAncestorCode, family.get(0).getName(), newAncestorCode/10);
-		
-		for(int i=1; i<family.size(); i++) {
-			int digitsNum = String.valueOf(family.get(i).getCode()).length();	
-			long staticDigits = (long) (family.get(i).getCode()%(Math.pow(10, digitsNum-familyFatherDigitsNum)));
+		try{
+			connection.setAutocommit(false);
+			createCategory(newAncestorCode, family.get(0).getName(), newAncestorCode/10);
 			
-			long newCode = staticDigits + (long)(Math.pow(10, digitsNum-familyFatherDigitsNum))* newAncestorCode;
-			
-			createCategory(newCode, family.get(i).getName(), newCode/10);
+			for(int i=1; i<family.size(); i++) {
+				int digitsNum = String.valueOf(family.get(i).getCode()).length();	
+				long staticDigits = (long) (family.get(i).getCode()%(Math.pow(10, digitsNum-familyFatherDigitsNum)));
+				
+				long newCode = staticDigits + (long)(Math.pow(10, digitsNum-familyFatherDigitsNum))* newAncestorCode;
+				
+				createCategory(newCode, family.get(i).getName(), newCode/10);
+			}
+			connection.commit();
+		}catch(SQLException e){
+			if(connection != null)
+				connection.rollback();
+		}finally{
+			assert connection != null;
+			connection.setAutocommit(true);
 		}
 		
 		
