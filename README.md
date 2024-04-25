@@ -1,5 +1,6 @@
 # Web-App-Project-TIW-2023 - Lo Presti Irene, Lussana Matteo
-Progetto finale per il corso "Tecnologie per il Web" al politecnico di Milano. Il progetto contiene una web app in due versioni: thin e thick client. L'applicazione è stata svluppata da un gruppo composto da due persone: 
+Progetto finale per il corso "Tecnologie Informatiche per il Web" tenuto al Politecnico di Milano, anno accademico 2022/23. 
+Il progetto contiene una web app in due versioni: thin e thick client. L'applicazione è stata svluppata da un gruppo composto da due persone: 
 Irene Lo Presti ([@irelop](https://github.com/irelop)) e Matteo Lussana ([@matteo-lussana](https://github.com/matteo-lussana)).
 # Web App
 ## Pure HTML
